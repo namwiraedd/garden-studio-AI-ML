@@ -474,5 +474,21 @@ pause
 
 Together, these give your team a complete **zero-config local deployment cycle** — perfect for non-developers or demo environments.
 
+Practical run example (commands)
+cd garden-studio-ai/ml
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+
+# interactive accelerate setup (choose GPU config)
+accelerate config
+
+# (set HF token)
+export HUGGINGFACE_HUB_TOKEN="hf_..."   # or pass --hf_token in script args
+
+# train (this will use accelerate and GPU)
+accelerate launch train_lora.py --config config.yaml --images_dir ./data/images --labels ./data/labels.csv --out_dir ./lora_checkpoints
+
+# when training done, generate:
+python generate_from_lora.py --lora_checkpoint ./lora_checkpoints/lora-final --prompt "modern garden studio, timber cladding, lots of windows" --out_dir ./generated
 
 
