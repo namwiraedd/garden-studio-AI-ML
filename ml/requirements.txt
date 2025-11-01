@@ -1,0 +1,11 @@
+torch>=2.0.0
+transformers>=4.30.0
+diffusers>=0.19.0
+accelerate>=0.20.0
+safetensors
+peft>=0.5.0
+datasets
+xformers   # optional, speeds up attention if available
+opencv-python
+tqdm
+Pillow
