@@ -1,0 +1,21 @@
+# ML LoRA training runbook
+
+Prereqs:
+- GPU machine with CUDA, NVIDIA drivers, CUDA toolkit
+- Python env: `pip install -r requirements.txt`
+- Hugging Face token set as env `HF_TOKEN` or `export HUGGINGFACE_HUB_TOKEN=...`
+- Run `accelerate config` and create a default profile for your GPU setup.
+
+Steps:
+1. Prepare dataset:
+   - Put images into `ml/data/images/`
+   - Create `ml/data/labels.csv` lines: `image1.jpg,modern garden studio with large casement windows and timber cladding`
+2. Train LoRA:
+   - `accelerate launch train_lora.py --config ml/config.yaml --images_dir ml/data/images --labels ml/data/labels.csv --out_dir ml/lora_checkpoints --hf_token $HF_TOKEN`
+3. Generate:
+   - `python generate_from_lora.py --lora_checkpoint ml/lora_checkpoints/lora-final --prompt "modern garden studio, timber cladding, large casement windows, golden hour" --out_dir ml/generated --seed 1234`
+
+Tips:
+- Use LoRA to keep GPU costs low.
+- To speed up, set `use_xformers: true` in config and install xformers if compatible.
+- For production inference, use a dedicated inference service with batching and caching.
