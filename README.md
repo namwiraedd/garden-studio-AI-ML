@@ -181,8 +181,8 @@ If you plan to expand, consider connecting an authentication layer or payment ga
 
 ##  Author
 
-Developed by [Edward Juma]
-Contact: [[your.email@example.com](edwardjuma252@gmail.com)]
+Developed by Edward Juma
+Contact: [[edwardjuma252@gmail.com](your.email@example.com)]
 
 ```
 
