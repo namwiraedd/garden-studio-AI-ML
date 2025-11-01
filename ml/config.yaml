@@ -1,0 +1,17 @@
+# ml/config.yaml
+base_model: "runwayml/stable-diffusion-v1-5"   # change to model of your choice
+output_dir: "./lora_checkpoints"
+train_batch_size: 2
+gradient_accumulation_steps: 8
+max_train_steps: 1500
+learning_rate: 1e-4
+mixed_precision: "fp16"
+resolution: 512
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+seed: 42
+num_workers: 4
+logging_steps: 50
+save_steps: 500
+use_xformers: true
